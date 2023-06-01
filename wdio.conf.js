@@ -23,7 +23,7 @@ export const config = {
     // will be called from there.
     //
     specs: [
-        './features/**/*.features'
+        './features/**/*.feature'
         // ToDo: define location for spec files here
     ],
     // Patterns to exclude.
