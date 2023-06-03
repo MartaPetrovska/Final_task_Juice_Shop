@@ -1,19 +1,25 @@
 const { Then } = require("@wdio/cucumber-framework");
 
 Then(/^I have registered account$/, async function() {
-    await console.log("I have registered account");
+    await this.basePage.buttonAccount.waitForDisplayed();
+    await this.basePage.buttonAccount.click();
+    await this.basePage.buttonLogin.waitForDisplayed();
+    await this.basePage.buttonLogin.click();
+    await this.loginPage.inputEmail.waitForDisplayed();
+    await this.loginPage.inputEmail.setValue(this.user.email); //jane12doee@gmail.com
+    await this.loginPage.inputPassword.waitForDisplayed();
+    await this.loginPage.inputPassword.setValue(this.user.password); //Parole123
+    await this.loginPage.buttonLogin.waitForDisplayed();
+    await this.loginPage.buttonLogin.click();
+    await this.loginPage.buttonBasket.waitForDisplayed();
 });
 
 Then(/^I have logged out$/, async function() {
-    await console.log("I have logged out");
-});
-
-Then(/^I see message about email must be unique$/, async function() {
-    await console.log("I see message about email must be unique");
-});
-
-Then(/^I am in register page$/, async function() {
-    await console.log("I am in register page");
+    await this.basePage.buttonAccount.waitForDisplayed();
+    await this.basePage.buttonAccount.click(); 
+    await this.loginPage.buttonLogout.waitForDisplayed();
+    await this.loginPage.buttonLogout.click(); 
+    await this.basePage.buttonBasket.waitForDisplayed({ reverse: true });
 });
 
 Then(/^I am on login page$/, async function() {
@@ -41,7 +47,10 @@ Then(/^I enter security question$/, async function() {
 });
 
 Then(/^I enter new password and confirm$/, async function() {
-    await console.log("I enter new password and confirm");
+    await this.loginPage.inputNewPassword.waitForDisplayed();
+    let curTime = new Date().valueOf();
+    this.user.newPassword = `Parole${curTime}`;
+    await this.loginPage.inputNewPassword.setValue(this.user.newPassword);
 });
 
 Then(/^I see message about succesfully changed password$/, async function() {
@@ -51,3 +60,4 @@ Then(/^I see message about succesfully changed password$/, async function() {
 Then(/^I have logged in$/, async function() {
     await console.log("I have logged in");
 });
+
