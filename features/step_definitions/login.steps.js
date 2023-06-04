@@ -58,8 +58,9 @@ Then(/^I enter security question$/, async function() {
 Then(/^I enter new password and confirm$/, async function() {
     await this.loginPage.inputNewPassword.waitForDisplayed();
     let curTime = new Date().valueOf();
-    this.user.newPassword = `Parole${curTime}`;
-    this.user.password = this.user.newPassword
+    let newPassword = `Parole${curTime}`;
+    this.user.password = newPassword;
+    console.log(newPassword);
     await this.loginPage.inputNewPassword.setValue(this.user.password);
     await this.loginPage.inputRepeatPassword.waitForDisplayed();
     await this.loginPage.inputRepeatPassword.setValue(this.user.password);
