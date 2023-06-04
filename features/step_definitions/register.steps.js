@@ -16,7 +16,7 @@ Then(/^I enter email address$/, async function() {
 
 Then(/^I enter password$/, async function() {
     await this.registerPage.inputPassword.waitForDisplayed();
-    this.user.password = "Parole123";
+    //this.user.password = "Parole123";
     await this.registerPage.inputPassword.setValue(this.user.password);
 });
 
@@ -31,12 +31,11 @@ Then(/^I select security question about elder sibling$/, async function() {
     let element = await this.registerPage.securityQuestionOption("eldest siblings middle name");
     await element.waitForDisplayed();
     await element.click();
-    // await (await pages.registerPage.securityQuestionOption("eldest siblings middle name")).waitForDisplayed();
 });
 
 Then(/^I enter answer$/, async function() {
     await this.registerPage.inputAnswer.waitForDisplayed();
-    await this.registerPage.inputAnswer.setValue("John");
+    await this.registerPage.inputAnswer.setValue(this.user.securityAnswer);
 });
 
 Then(/^I press register button$/, async function() {

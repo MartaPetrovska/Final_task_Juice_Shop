@@ -4,7 +4,7 @@ class BasePage {
     }
 
     get buttonAccount() {
-        return browser.$('//button[@id="navbarAccount"]//span[contains(@class, "button-wrapper")]');
+        return browser.$('//button[@id="navbarAccount"]//span[contains(@class, "button-wrapper")]'); //
     }
 
     get buttonLogin() {
@@ -46,6 +46,19 @@ class BasePage {
 
     get buttonLogout() {
         return browser.$('//button[@id="navbarLogoutButton"]');
+    }
+
+    get buttonSearch() {
+        return browser.$('//mat-icon[contains(text(), "search")]');
+    }
+
+    get searchBar() {
+        // return browser.$('//input'); //[@id="mat-input-0"]
+        return browser.$('input[type="text"]')
+    }
+
+    async confirmationMessage(name) {
+        return browser.$(`//*[@class = "mat-simple-snack-bar-content"][contains(text(), "${name}")]`); 
     }
 
 }

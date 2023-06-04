@@ -2,6 +2,9 @@ const BasePage = require('./features/page_objects/base.page');
 const LoginPage = require('./features/page_objects/authentification/login.page');
 const RegisterPage = require('./features/page_objects/authentification/register.page');
 const User = require('./features/support/data/user')
+const OrdersPayments = require('./features/page_objects/account/orders.payments.page');
+const ProductsPage = require('./features/page_objects/products.page');
+const CheckoutPage = require('./features/page_objects/checkout.page');
 
 export const config = {
     //
@@ -97,7 +100,7 @@ export const config = {
     baseUrl: 'http://159.223.1.129/#/',
     //
     // Default timeout for all waitFor* commands.
-    waitforTimeout: 5000,
+    waitforTimeout: 10000,
     //
     // Default timeout in milliseconds for request
     // if browser driver or grid doesn't send response
@@ -245,6 +248,9 @@ export const config = {
         context.loginPage = new LoginPage();
         context.registerPage = new RegisterPage();
         context.user = new User();
+        context.ordersPaymentsPage = new OrdersPayments();
+        context.productsPage = new ProductsPage();
+        context.checkoutPage = new CheckoutPage();
     },
     /**
      *
