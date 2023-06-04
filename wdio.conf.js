@@ -3,8 +3,8 @@ const LoginPage = require('./features/page_objects/authentification/login.page')
 const RegisterPage = require('./features/page_objects/authentification/register.page');
 const User = require('./features/support/data/user')
 const OrdersPayments = require('./features/page_objects/account/orders.payments.page');
-const ProductsPage = require('./features/page_objects/products.page');
-const CheckoutPage = require('./features/page_objects/checkout.page');
+const ProductsPage = require('./features/page_objects/purchase/products.page');
+const CheckoutPage = require('./features/page_objects/purchase/checkout.page');
 
 export const config = {
     //

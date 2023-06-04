@@ -1,4 +1,4 @@
-const BasePage = require('./base.page');
+const BasePage = require('../base.page');
 class CheckoutPage extends BasePage {
     constructor() {
         super();
@@ -32,7 +32,7 @@ class CheckoutPage extends BasePage {
         return browser.$('//h1[@class = "confirmation"]');
     }
 
-    get orderSummary() {
+    get titleOrderSummary() {
         return browser.$('//div[contains(text(), "Order Summary")]');
     }
 
@@ -40,10 +40,15 @@ class CheckoutPage extends BasePage {
         return browser.$(`//mat-row[descendant-or-self::mat-cell[contains(text(), "${product}")]/following-sibling::mat-cell[contains(text(), "${price}")]]`); 
     }
 
-    //mat-cell[contains(text(), "Apple Juice")]/following-sibling::mat-cell[contains(text(), "1.99")]/following-sibling::mat-cell[contains(text(), "1")]/following-sibling::mat-cell[contains(text(), "1.99")]
-//whole row //mat-row[descendant-or-self::mat-cell[contains(text(), "Apple Juice")]/following-sibling::mat-cell[contains(text(), "1.99")]]
+    async totalPrice(value) {
+        return browser.$(`//td[contains(text(), "${value}")]`)
+    }
 
+    async correctAddress(name, address, country) {
+        return browser.$(`//div[contains(text(), "${name}")]/following-sibling::div[contains(text(), "${address}")]/following-sibling::div[contains(text(), "${country}")]`)
+    }
 
 }
+
 
 module.exports = CheckoutPage;

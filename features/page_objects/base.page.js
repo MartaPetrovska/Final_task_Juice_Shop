@@ -11,19 +11,6 @@ class BasePage {
         return browser.$('//button[@id="navbarLoginButton"]//span');
     }
 
-    /* get buttonSearch() {
-        return browser.$('//mat-icon[contains(text(), "search")]');
-    } */
-
-    /* get buttonCloseSearch() {
-        return browser.$('//mat-icon[contains(text(), "close")]');
-    } */
-
-    /* get searchBar() {
-        // return browser.$('//input'); //[@id="mat-input-0"]
-        return browser.$('input[type="text"]')
-    } */
-
     get buttonDismissPopoup() {
         return browser.$('//span[contains(text(), "Dismiss")]');
     }
@@ -38,10 +25,6 @@ class BasePage {
 
     get buttonBasket() {
         return browser.$('//span[contains(text(), "Your Basket")]');
-    }
-
-    get userProfileButton() {
-        return browser.$('//*[@aria-label="Go to user profile"][@role="menuitem"]/span');
     } 
 
     get buttonLogout() {
@@ -53,12 +36,11 @@ class BasePage {
     }
 
     get searchBar() {
-        // return browser.$('//input'); //[@id="mat-input-0"]
         return browser.$('input[type="text"]')
     }
 
     async confirmationMessage(name) {
-        return browser.$(`//*[@class = "mat-simple-snack-bar-content"][contains(text(), "${name}")]`); 
+        return browser.$(`//span[@class = "mat-simple-snack-bar-content"][contains(text(), "${name}")]`); 
     }
 
 }

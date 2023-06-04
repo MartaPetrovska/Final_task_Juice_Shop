@@ -24,10 +24,6 @@ class OrdersPayments extends BasePage {
         return browser.$('//span[contains(text(), "Add New Address")]');
     }
 
-    async addressInfo(option) {
-        return browser.$(`//input[@placeholder = "Please provide a ${option}."]`); ////input[contains(@placeholder , "${option}.")][contains@placeholder = "Please provide a ${option}."]
-    }
-
     get inputCountry() {
         return browser.$('//input[@placeholder = "Please provide a country."]');
     }
@@ -65,28 +61,26 @@ class OrdersPayments extends BasePage {
     }
 
     get expMontsField(){
-        return browser.$('//mat-form-field[descendant-or-self::select[contains(@class, "mat-input-elemen")]]//mat-label[contains(text(), "Expiry Month")]');
+        return browser.$('//mat-label[contains(text(), "Expiry Month")]/ancestor::span[contains(@class, "mat-form-field-label-wrapper")]/preceding-sibling::select');
     }
 
-    //mat-label[contains(text(), "Expiry Month")]
-    //div[contains(@class, "mat-form-field-infix")]//option[@class= "ng-star-inserted"][contains(text(), "4")]
-   
-   //div[descendant-or-self::select[contains(@class, "mat-input-element")]//option[@class= "ng-star-inserted"][contains(text(), "4")]][descendant-or-self::mat-label[contains(text(), "Expiry Month")]]
-    //mat-form-field[descendant-or-self::div[contains(@class, "mat-form-field-infix")]//option[@class= "ng-star-inserted"][contains(text(), "4")][descendant-or-self::mat-label[contains(text(), "Expiry Month")]]
-
     async expMontsOption(value) {
-        return browser.$(`//div[@role="listbox"]//span[@class= "mat-option-text"][contains(text(), "${value}")]`);
+        return browser.$(`//option[@value="${value}"]`);
     }
 
     get expYearField() {
-        return browser.$('//mat-form-field[descendant-or-self::select[contains(@class, "mat-input-elemen")]]//mat-label[contains(text(), "Expiry Year")]');
+        return browser.$('//mat-label[contains(text(), "Expiry Year")]/ancestor::span[contains(@class, "mat-form-field-label-wrapper")]/preceding-sibling::select');
+    }
+
+    async expYearOption(value) {
+        return browser.$(`//option[@value="${value}"]`);
     }
 
     get buttonSubmit() {
         return browser.$('//button[@id = "submitButton"]');
     }
 
-    async confirmationMessage(name) { //var ielikt funkciju, kura aprēķina 4 pēdējos kartes ciparus
+    async confirmationMessage(name) {
         return browser.$(`//*[@class = "mat-simple-snack-bar-content"][contains(text(), )][contains(text(), "has been saved")]`);
     }
 
@@ -94,4 +88,3 @@ class OrdersPayments extends BasePage {
 
 module.exports = OrdersPayments;
 
-//input[@placeholder = "Please provide a name."]
