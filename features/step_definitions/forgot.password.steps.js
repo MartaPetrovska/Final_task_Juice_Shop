@@ -31,13 +31,13 @@ Then(/^I enter security question$/, async function() {
 
 Then(/^I enter new password and confirm$/, async function() {
     await this.loginPage.inputNewPassword.waitForDisplayed();
-    let curTime = new Date().valueOf();
+    /* let curTime = new Date().valueOf(); // not sure why this does not assign new password to this.user.newPassword
     let newPassword = `Parole${curTime}`;
-    this.user.password = newPassword;
-    console.log(newPassword);
-    await this.loginPage.inputNewPassword.setValue(this.user.password);
+    this.user.newPassword = newPassword.toString();
+    console.log(newPassword); */
+    await this.loginPage.inputNewPassword.setValue(this.user.newPassword);
     await this.loginPage.inputRepeatPassword.waitForDisplayed();
-    await this.loginPage.inputRepeatPassword.setValue(this.user.password);
+    await this.loginPage.inputRepeatPassword.setValue(this.user.newPassword);
     await this.loginPage.buttonChange.waitForDisplayed();
     await this.loginPage.buttonChange.click();
 });

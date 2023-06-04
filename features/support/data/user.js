@@ -1,8 +1,8 @@
 class User {
-    constructor(emailArg = "jane12doee@gmail.com", passwordArg = "Parole123", securityAnswerArg = "John") {
+    constructor(emailArg = "jane12doee@gmail.com", passwordArg = "parole", newPasswordArg = "parole1", securityAnswerArg = "John") {
         this.email = emailArg;
         this.password = passwordArg;
-        this.newPassword;
+        this.newPassword = newPasswordArg;
         this.securityAnswer = securityAnswerArg;
     }
 }

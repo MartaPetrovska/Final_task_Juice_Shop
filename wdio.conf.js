@@ -31,9 +31,9 @@ export const config = {
     // will be called from there.
     //
     specs: [
-        //'./features/**/*.feature'
+        './features/**/*.feature'
         //'./features/**/auth.feature'
-        './features/**/shopping.feature'
+        //'./features/**/shopping.feature'
         // ToDo: define location for spec files here
     ],
     // Patterns to exclude.
