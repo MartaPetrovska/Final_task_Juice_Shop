@@ -1,3 +1,11 @@
+const BasePage = require('./features/page_objects/base.page');
+const LoginPage = require('./features/page_objects/authentification/login.page');
+const RegisterPage = require('./features/page_objects/authentification/register.page');
+const User = require('./features/support/data/user')
+const OrdersPayments = require('./features/page_objects/account/orders.payments.page');
+const ProductsPage = require('./features/page_objects/purchase/products.page');
+const CheckoutPage = require('./features/page_objects/purchase/checkout.page');
+
 export const config = {
     //
     // ====================
@@ -24,6 +32,11 @@ export const config = {
     //
     specs: [
         './features/**/*.feature'
+        //'./features/**/auth.feature'
+        //'./features/**/shopping.feature'
+        // ToDo: define location for spec files here
+    ],
+    // Patterns to exclude.
         // ToDo: define location for spec files here
     ],
     // Patterns to exclude.
@@ -90,7 +103,7 @@ export const config = {
     baseUrl: 'http://159.223.1.129/#/',
     //
     // Default timeout for all waitFor* commands.
-    waitforTimeout: 15000,
+    waitforTimeout: 10000,
     //
     // Default timeout in milliseconds for request
     // if browser driver or grid doesn't send response
@@ -233,8 +246,15 @@ export const config = {
      * @param {ITestCaseHookParameter} world    world object containing information on pickle and test step
      * @param {object}                 context  Cucumber World object
      */
-    // beforeScenario: function (world, context) {
-    // },
+    beforeScenario: async function (world, context) {
+        context.basePage = new BasePage();
+        context.loginPage = new LoginPage();
+        context.registerPage = new RegisterPage();
+        context.user = new User();
+        context.ordersPaymentsPage = new OrdersPayments();
+        context.productsPage = new ProductsPage();
+        context.checkoutPage = new CheckoutPage();
+    },
     /**
      *
      * Runs before a Cucumber Step.
