@@ -37,6 +37,9 @@ export const config = {
         // ToDo: define location for spec files here
     ],
     // Patterns to exclude.
+        // ToDo: define location for spec files here
+    ],
+    // Patterns to exclude.
     exclude: [
         // 'path/to/excluded/files'
     ],
